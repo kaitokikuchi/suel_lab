@@ -1,8 +1,12 @@
+# Script to generate animated histograms from csv input
+# To run, open Terminal and execute
+# $python hist_animation.py data.csv
+
+
 import pandas as pd
 import argparse
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-
 
 def main(file):
 	# Input CSV should be formatted to have rows as timepoints
