@@ -5,7 +5,8 @@ import matplotlib.animation as animation
 
 
 def main(file):
-	# Prepare the dataset you want to visualize into a Dataframe with rows as timepoints and columns for individual cells
+	# Input CSV should be formatted to have rows as timepoints
+    # and columns for individual ROIs
 
 	data= pd.read_csv(file)
 	frame_length = len(data.index)
@@ -33,7 +34,8 @@ def main(file):
 	fig = plt.figure()
 	ax = fig.add_subplot(111)
 
-	ani = animation.FuncAnimation(fig, update_hist, frame_length, init_func=init, repeat=False)
+	ani = animation.FuncAnimation(fig, update_hist, frame_length, 
+                                  init_func=init, repeat=False)
 
 	#define writer command. Change fps for different speeds
 	Writer = animation.writers['ffmpeg']
