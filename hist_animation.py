@@ -39,7 +39,6 @@ def main(file):
 	Writer = animation.writers['ffmpeg']
 	writer = Writer(fps=3, bitrate=1800)
 
-	#saves animation as GIF file using imagemagick. 
 	ani.save('hist_animation.mp4', writer=writer)
 
 if __name__ == "__main__":
