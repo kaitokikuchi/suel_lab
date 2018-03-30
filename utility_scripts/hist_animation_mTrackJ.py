@@ -1,4 +1,4 @@
-# Script to generate animated histograms from csv input
+# Script to generate animated histograms from mTrackJ data
 # To run, open Terminal and execute
 # $python hist_animation.py data.csv
 
@@ -9,10 +9,12 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 def main(file):
-	# Input CSV should be formatted to have rows as timepoints
+	# format data to have rows as timepoints
     # and columns for individual ROIs
+    
 
-	data= pd.read_csv(file)
+	data_temp= pd.read_csv(file)
+	data = data_temp.pivot(columns='Slice', values='Mean').apply(lambda x: pd.Series(x.dropna().values))
 	frame_length = len(data.index)
 
 	def update_hist(i):
@@ -28,7 +30,7 @@ def main(file):
 	    	transform = ax.transAxes)
 
 	    #plot ith row of dataset
-	    plt.hist(data.iloc[i])
+	    plt.hist(data.iloc[i].dropna(),alpha=0.5)
 
 	#This inititalization will plot the background
 	def init():
