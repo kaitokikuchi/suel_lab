@@ -29,7 +29,7 @@ def main(file):
 	    	verticalalignment='center',
 	    	transform = ax.transAxes)
 
-	    #plot ith row of dataset
+	    #plot each column of dataset
 	    plt.hist(data[i+1].dropna(),alpha=0.5)
 
 	#This inititalization will plot the background
